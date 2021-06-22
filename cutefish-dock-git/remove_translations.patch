@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6a0a7f6..b862435 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,10 +52,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
+         KF5::WindowSystem
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(${PROJECT_NAME} translations)
+-
+ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
+-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)

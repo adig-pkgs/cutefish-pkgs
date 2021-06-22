@@ -1,0 +1,49 @@
+# Maintainer: noone <>
+pkgname=cutefish-dock-git
+pkgver=r100.c3580ee
+pkgrel=1
+pkgdesc="Cutefish Dock"
+arch=('x86_64')
+url="https://github.com/cutefishos/dock.git"
+license=('GPLv3')
+depends=('fishui' 'libcutefish')
+makedepends=('git' 'cmake' 'gcc' 'ninja')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}"
+	'remove_translations.patch')
+md5sums=('SKIP'
+	'e8da2c68cd8332785825edb3f322ffb4')
+
+prepare() {
+	cd "$srcdir/${pkgname%-git}"
+
+	# Apply patches
+	git apply "$srcdir"/*.patch
+}
+
+pkgver() {
+        cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+        mkdir -p build && cd build
+        rm -f CMakeCache.txt
+	echo "Inside "$(pwd)
+	cmake \
+		-G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		..
+	cmake --build .
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+        cd build
+	DESTDIR="$pkgdir/" cmake --install .
+}
+
