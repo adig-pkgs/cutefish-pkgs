@@ -1,26 +1,24 @@
 # Maintainer: noone <>
-pkgname=cutefish-core-git
-pkgver=r141.0d02e50
+pkgname=cutefish-qt-plugins-git
+pkgver=r12.de2a3a9
 pkgrel=1
-pkgdesc="Cutefish Core"
+pkgdesc="Cutefish QT Plugins"
 arch=('x86_64')
-url="https://github.com/cutefishos/core.git"
+url="https://github.com/cutefishos/qt-plugins.git"
 license=('GPL3')
 groups=('cutefish-git')
 depends=('qt5-base')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}"
-	'remove_translation.patch')
-md5sums=('SKIP'
-	'264475d8dc42527eb9da74e50dc6531d')
+source=("${pkgname%-git}::git+${url}")
+md5sums=('SKIP')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"
 
         # Apply patches
-        git apply "$srcdir"/*.patch
+        #git apply "$srcdir"/*.patch
 }
 
 pkgver() {

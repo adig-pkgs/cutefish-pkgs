@@ -1,10 +1,10 @@
 # Maintainer: noone <>
-pkgname=cutefish-core-git
-pkgver=r141.0d02e50
+pkgname=cutefish-statusbar-git
+pkgver=r125.0b6d847
 pkgrel=1
-pkgdesc="Cutefish Core"
+pkgdesc="Cutefish Settings"
 arch=('x86_64')
-url="https://github.com/cutefishos/core.git"
+url="https://github.com/cutefishos/statusbar.git"
 license=('GPL3')
 groups=('cutefish-git')
 depends=('qt5-base')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'264475d8dc42527eb9da74e50dc6531d')
+	'179063c1619bcd3e29f0faea409f3f56')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

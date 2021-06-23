@@ -1,10 +1,10 @@
 # Maintainer: noone <>
-pkgname=cutefish-core-git
-pkgver=r141.0d02e50
+pkgname=cutefish-launcher-git
+pkgver=r87.a54d5db
 pkgrel=1
-pkgdesc="Cutefish Core"
+pkgdesc="Cutefish Launcher"
 arch=('x86_64')
-url="https://github.com/cutefishos/core.git"
+url="https://github.com/cutefishos/launcher.git"
 license=('GPL3')
 groups=('cutefish-git')
 depends=('qt5-base')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'264475d8dc42527eb9da74e50dc6531d')
+	'5afb932f485da4066d58e442f3d08100')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

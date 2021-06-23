@@ -1,27 +1,18 @@
 # Maintainer: noone <>
-pkgname=cutefish-core-git
-pkgver=r141.0d02e50
+pkgname=cutefish-wallpapers-git
+pkgver=r4.8d029e8
 pkgrel=1
-pkgdesc="Cutefish Core"
+pkgdesc="Cutefish Wallpapers"
 arch=('x86_64')
-url="https://github.com/cutefishos/core.git"
+url="https://github.com/cutefishos/wallpapers.git"
 license=('GPL3')
 groups=('cutefish-git')
 depends=('qt5-base')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+${url}"
-	'remove_translation.patch')
-md5sums=('SKIP'
-	'264475d8dc42527eb9da74e50dc6531d')
-
-prepare() {
-        cd "$srcdir/${pkgname%-git}"
-
-        # Apply patches
-        git apply "$srcdir"/*.patch
-}
+source=("${pkgname%-git}::git+${url}")
+md5sums=('SKIP')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"

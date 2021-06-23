@@ -1,0 +1,15 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7e1d81b..0d44542 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -111,10 +111,4 @@ target_link_libraries(cutefish-statusbar
+   ${XCB_LIBS_LIBRARIES}
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-statusbar translations)
+-
+ install(TARGETS cutefish-statusbar RUNTIME DESTINATION /usr/bin)
+-install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-statusbar/translations)
