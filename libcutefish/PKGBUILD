@@ -1,0 +1,40 @@
+# Maintainer: noone <>
+pkgname=libcutefish-git
+pkgver=r15.c59db76
+pkgrel=1
+pkgdesc="Cutefish System Library"
+arch=('x86_64')
+url="https://github.com/cutefishos/libcutefish.git"
+license=('GPL3')
+groups=('cutefish-git')
+depends=('qt5-base')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}")
+md5sums=('SKIP')
+
+pkgver() {
+        cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+        mkdir -p build && cd build
+        rm -f CMakeCache.txt
+	cmake \
+		-G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		..
+	cmake --build .
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+        cd build
+	DESTDIR="$pkgdir/" cmake --install .
+}
+
