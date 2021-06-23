@@ -1,0 +1,56 @@
+diff --git a/polkit-agent/CMakeLists.txt b/polkit-agent/CMakeLists.txt
+index 6788325..9b037ec 100644
+--- a/polkit-agent/CMakeLists.txt
++++ b/polkit-agent/CMakeLists.txt
+@@ -29,11 +29,6 @@ target_link_libraries(cutefish-polkit-agent
+         ${POLKIT_AGENT_LDFLAGS}
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(polkit-agent-translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-polkit-agent polkit-agent-translations)
+-
+ install(TARGETS cutefish-polkit-agent
+     DESTINATION /usr/bin
+     COMPONENT Runtime
+@@ -44,5 +39,3 @@ cutefish-polkit-agent.desktop
+     DESTINATION "/etc/xdg/autostart"
+     COMPONENT Runtime
+ )
+-
+-install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-polkit-agent/translations)
+\ No newline at end of file
+diff --git a/settings-daemon/CMakeLists.txt b/settings-daemon/CMakeLists.txt
+index 3a96f01..cc69e1a 100644
+--- a/settings-daemon/CMakeLists.txt
++++ b/settings-daemon/CMakeLists.txt
+@@ -56,10 +56,4 @@ target_link_libraries(${TARGET}
+         ${PULSEAUDIO_LIBRARY}
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(${TARGET} translations)
+-
+ install(TARGETS ${TARGET} DESTINATION /usr/bin)
+-install(FILES ${QM_FILES} DESTINATION /usr/share/${TARGET}/translations)
+\ No newline at end of file
+diff --git a/shutdown-ui/CMakeLists.txt b/shutdown-ui/CMakeLists.txt
+index 3b1da05..d4f3fa8 100644
+--- a/shutdown-ui/CMakeLists.txt
++++ b/shutdown-ui/CMakeLists.txt
+@@ -14,10 +14,4 @@ target_link_libraries(cutefish-shutdown
+         Qt5::DBus
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(shutdown-translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(cutefish-shutdown shutdown-translations)
+-install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-shutdown/translations)
+-
+-install(TARGETS cutefish-shutdown RUNTIME DESTINATION /usr/bin)
+\ No newline at end of file
++install(TARGETS cutefish-shutdown RUNTIME DESTINATION /usr/bin)

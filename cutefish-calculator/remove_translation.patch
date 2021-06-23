@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index aab3d1b..43f908b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -40,10 +40,7 @@ target_link_libraries(${PROJECT_NAME}
+ if (MSVC)
+     # do nothing
+ else()
+-    file(GLOB TS_FILES translations/*.ts)
+-    qt5_create_translation(QM_FILES ${TS_FILES})
+-    add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-    add_dependencies(${PROJECT_NAME} translations)
++	# removed translations
+ endif ()
+ 
+ 
+@@ -54,5 +51,3 @@ install(FILES
+     DESTINATION /usr/share/applications/
+     COMPONENT Runtime
+ )
+-
+-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)

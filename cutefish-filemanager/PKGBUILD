@@ -1,0 +1,49 @@
+# Maintainer: noone <>
+pkgname=cutefish-filemanager-git
+pkgver=r124.129a2fc
+pkgrel=1
+pkgdesc="Cutefish Filemanager"
+arch=('x86_64')
+url="https://github.com/cutefishos/filemanager.git"
+license=('GPLv3')
+groups=('cutefish-git')
+depends=('qt5-base' 'qt5-quickcontrols2' 'freetype2' 'fontconfig' 'networkmanager-qt' 'modemmanager-qt')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}"
+	'remove_translation.patch')
+md5sums=('SKIP'
+	'2001ca88f3f8561e29d9d99b68db8d20')
+
+prepare() {
+        cd "$srcdir/${pkgname%-git}"
+
+        # Apply patches
+        git apply "$srcdir"/*.patch
+}
+
+pkgver() {
+        cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+        mkdir -p build && cd build
+        rm -f CMakeCache.txt
+	cmake \
+		-G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		..
+	cmake --build .
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+        cd build
+	DESTDIR="$pkgdir/" cmake --install .
+}
+

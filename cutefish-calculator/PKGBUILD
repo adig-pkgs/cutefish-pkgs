@@ -1,0 +1,49 @@
+# Maintainer: noone <>
+pkgname=cutefish-calculator-git
+pkgver=r9.44a8797
+pkgrel=1
+pkgdesc="Cutefish Calculator"
+arch=('x86_64')
+url="https://github.com/cutefishos/calculator.git"
+license=('GPLv3')
+groups=('cutefish-git')
+depends=('qt5-base')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname%-git}::git+${url}"
+	"remove_translation.patch")
+md5sums=('SKIP'
+	'f0d575673013ea5b43face349d97e935')
+
+prepare() {
+        cd "$srcdir/${pkgname%-git}"
+
+        # Apply patches
+        git apply "$srcdir"/*.patch
+}
+
+pkgver() {
+        cd "$srcdir/${pkgname%-git}"
+
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$srcdir/${pkgname%-git}"
+        mkdir -p build && cd build
+        rm -f CMakeCache.txt
+	cmake \
+		-G Ninja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		..
+	cmake --build .
+}
+
+package() {
+	cd "$srcdir/${pkgname%-git}"
+        cd build
+	DESTDIR="$pkgdir/" cmake --install .
+}
+
