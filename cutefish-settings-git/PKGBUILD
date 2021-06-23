@@ -1,26 +1,26 @@
 # Maintainer: noone <>
-pkgname=cutefish-dock-git
-pkgver=r101.9458b8f
+pkgname=cutefish-settings-git
+pkgver=r176.c93025f
 pkgrel=1
-pkgdesc="Cutefish Dock"
+pkgdesc="Cutefish Settings"
 arch=('x86_64')
-url="https://github.com/cutefishos/dock.git"
+url="https://github.com/cutefishos/settings.git"
 license=('GPLv3')
 groups=('cutefish-git')
-depends=('fishui' 'libcutefish')
-makedepends=('git' 'cmake' 'gcc' 'ninja')
+depends=('qt5-base' 'qt5-quickcontrols2' 'freetype2' 'fontconfig' 'networkmanager-qt' 'modemmanager-qt')
+makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
-	'remove_translations.patch')
+	'remove_translation_settings.patch')
 md5sums=('SKIP'
-	'e8da2c68cd8332785825edb3f322ffb4')
+	'fc643b8d6f89a0b5d3c5c71245269fbe')
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+        cd "$srcdir/${pkgname%-git}"
 
-	# Apply patches
-	git apply "$srcdir"/*.patch
+        # Apply patches
+        git apply "$srcdir"/*.patch
 }
 
 pkgver() {
@@ -33,7 +33,6 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
         mkdir -p build && cd build
         rm -f CMakeCache.txt
-	echo "Inside "$(pwd)
 	cmake \
 		-G Ninja \
 		-DCMAKE_INSTALL_PREFIX=/usr \
