@@ -3,14 +3,15 @@ pkgname=cutefish-wallpapers-git
 pkgver=r4.8d029e8
 pkgrel=1
 pkgdesc="Cutefish Wallpapers"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/cutefishos/wallpapers.git"
 license=('GPL3')
 groups=('cutefish-git')
-depends=('qt5-base')
+depends=()
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!strip')
 source=("${pkgname%-git}::git+${url}")
 md5sums=('SKIP')
 

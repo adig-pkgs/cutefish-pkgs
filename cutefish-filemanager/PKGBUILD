@@ -1,13 +1,13 @@
 # Maintainer: noone <>
 pkgname=cutefish-filemanager-git
-pkgver=r124.129a2fc
+pkgver=r125.378e850
 pkgrel=1
 pkgdesc="Cutefish Filemanager"
 arch=('x86_64')
 url="https://github.com/cutefishos/filemanager.git"
 license=('GPL3')
 groups=('cutefish-git')
-depends=('qt5-base')
+depends=('kio')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
