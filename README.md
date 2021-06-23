@@ -1,5 +1,7 @@
 ## These are not official PKGBUILDs, though you may like to use them
 
+Run the `install_all.sh` script to install all packages of the groups `cutefish-git` (these packages)
+
 All of these packages will replace the 'older' (& likely more stable) packages installed through arch repositories.
 All of these belong to the `cutefish-git` group 😄
 
