@@ -2,7 +2,7 @@
 pkgname=cutefish-statusbar-git
 pkgver=r125.0b6d847
 pkgrel=1
-pkgdesc="Cutefish Settings"
+pkgdesc="Cutefish Statusbar"
 arch=('x86_64')
 url="https://github.com/cutefishos/statusbar.git"
 license=('GPL3')
