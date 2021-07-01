@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-statusbar-git
-pkgver=r125.0b6d847
+pkgver=r137.65f601e
 pkgrel=1
 pkgdesc="Cutefish Statusbar"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'179063c1619bcd3e29f0faea409f3f56')
+	'db2ffb0cfba2cf95bf91ff03005f586f')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

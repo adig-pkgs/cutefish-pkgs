@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-filemanager-git
-pkgver=r125.378e850
+pkgver=r127.6d496e8
 pkgrel=1
 pkgdesc="Cutefish Filemanager"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'2001ca88f3f8561e29d9d99b68db8d20')
+	'dd2d697e74a3bce8c4e72642522a9873')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

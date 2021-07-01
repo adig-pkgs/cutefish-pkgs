@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-launcher-git
-pkgver=r87.a54d5db
+pkgver=r92.4bf9ceb
 pkgrel=1
 pkgdesc="Cutefish Launcher"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'5afb932f485da4066d58e442f3d08100')
+	'6076e9a82a698800f7cac187c441d590')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

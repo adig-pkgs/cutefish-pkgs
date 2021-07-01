@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-dock-git
-pkgver=r101.9458b8f
+pkgver=r104.63036dc
 pkgrel=1
 pkgdesc="Cutefish Dock"
 arch=('x86_64')
@@ -12,9 +12,9 @@ makedepends=('git' 'cmake' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
-	'remove_translations.patch')
+	'remove_translation.patch')
 md5sums=('SKIP'
-	'e8da2c68cd8332785825edb3f322ffb4')
+	'c63bba8ae8d56668fe004318a750f419')
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"

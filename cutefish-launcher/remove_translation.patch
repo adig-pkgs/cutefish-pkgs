@@ -1,7 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index a491ed9..158003a 100644
+index a491ed9..8102b73 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-set(QT Core Widgets DBus Quick QuickControls2 LinguistTools)
++set(QT Core Widgets DBus Quick QuickControls2)
+ find_package(Qt5 REQUIRED ${QT})
+ find_package(KF5WindowSystem REQUIRED)
+ 
 @@ -51,10 +51,4 @@ target_link_libraries(${PROJECT_NAME}
          KF5::WindowSystem
  )

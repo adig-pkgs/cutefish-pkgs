@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-kwin-plugins-git
-pkgver=r14.325a774
+pkgver=r15.e5b7797
 pkgrel=1
 pkgdesc="Cutefish KWin plugins"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/cutefishos/kwin-plugins.git"
 license=('GPL3')
 groups=('cutefish-git')
 depends=('kwin')
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
+makedepends=('git' 'qt5-tools' 'cmake' 'extra-cmake-modules' 'gcc' 'ninja')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}")

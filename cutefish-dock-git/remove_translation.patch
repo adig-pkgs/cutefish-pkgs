@@ -1,7 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 6a0a7f6..b862435 100644
+index 6a0a7f6..12be07c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-find_package(Qt5 CONFIG REQUIRED Widgets DBus X11Extras Concurrent LinguistTools QuickControls2)
++find_package(Qt5 CONFIG REQUIRED Widgets DBus X11Extras Concurrent QuickControls2)
+ 
+ find_package(KF5WindowSystem REQUIRED)
+ find_package(FishUI REQUIRED)
 @@ -52,10 +52,4 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
          KF5::WindowSystem
  )

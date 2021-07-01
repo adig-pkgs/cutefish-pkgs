@@ -1,7 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index aab3d1b..43f908b 100644
+index aab3d1b..57f163e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-set(QT Core Gui Quick QuickControls2 LinguistTools)
++set(QT Core Gui Quick QuickControls2)
+ find_package(Qt5 REQUIRED ${QT})
+ if (MSVC)
+     # fix warning C4819: The file contains a character that cannot be represented in the current code page (936).
 @@ -40,10 +40,7 @@ target_link_libraries(${PROJECT_NAME}
  if (MSVC)
      # do nothing

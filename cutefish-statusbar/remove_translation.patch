@@ -1,8 +1,17 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7e1d81b..0d44542 100644
+index a62bde7..1286636 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -111,10 +111,4 @@ target_link_libraries(cutefish-statusbar
+@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-find_package(Qt5 CONFIG REQUIRED Widgets DBus X11Extras Concurrent Svg LinguistTools QuickControls2)
++find_package(Qt5 CONFIG REQUIRED Widgets DBus X11Extras Concurrent Svg QuickControls2)
+ find_package(KF5WindowSystem REQUIRED)
+ find_package(FishUI REQUIRED)
+ find_package(PkgConfig REQUIRED)
+@@ -116,10 +116,4 @@ target_link_libraries(cutefish-statusbar
    ${XCB_LIBS_LIBRARIES}
  )
  

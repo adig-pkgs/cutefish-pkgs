@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3764dcb..6e0fbdb 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+-set(QT Core Gui Widgets Quick QuickControls2 X11Extras DBus Xml Concurrent LinguistTools)
++set(QT Core Gui Widgets Quick QuickControls2 X11Extras DBus Xml Concurrent)
+ find_package(Qt5 REQUIRED ${QT})
+ find_package(FishUI REQUIRED)
+ find_package(Freetype REQUIRED)
+@@ -73,11 +73,6 @@ target_link_libraries(${PROJECT_NAME}
+         Libcrypt::Libcrypt
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(${PROJECT_NAME} translations)
+-
+ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
+ 
+ install(FILES
+@@ -85,5 +80,3 @@ install(FILES
+     DESTINATION /usr/share/applications/
+     COMPONENT Runtime
+ )
+-
+-install(FILES ${QM_FILES} DESTINATION /usr/share/${PROJECT_NAME}/translations)

@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	"remove_translation.patch")
 md5sums=('SKIP'
-	'f0d575673013ea5b43face349d97e935')
+	'79cb4d6844a22bcd5cd91920f8ef10f1')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"

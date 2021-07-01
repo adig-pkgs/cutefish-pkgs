@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-core-git
-pkgver=r141.0d02e50
+pkgver=r151.d14552c
 pkgrel=1
 pkgdesc="Cutefish Core"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}"
 	'remove_translation.patch')
 md5sums=('SKIP'
-	'264475d8dc42527eb9da74e50dc6531d')
+	'b7113ff5872995d523b4014cd7fd3c17')
 
 prepare() {
         cd "$srcdir/${pkgname%-git}"
