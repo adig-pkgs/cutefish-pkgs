@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-icons-git
-pkgver=r6.55ed8e5
+pkgver=r8.1eeea5ea
 pkgrel=1
 pkgdesc="Cutefish Icons"
 arch=('any')

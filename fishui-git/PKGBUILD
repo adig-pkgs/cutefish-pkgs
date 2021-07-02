@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=fishui-git
-pkgver=r75.5329afd
+pkgver=r79.74015f7
 pkgrel=1
 pkgdesc="Cutefish FishUI"
 arch=('x86_64')

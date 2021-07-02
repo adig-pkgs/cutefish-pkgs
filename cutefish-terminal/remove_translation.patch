@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 56dc8a2..9914014 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -10,7 +10,7 @@ set(CMAKE_AUTORCC ON)
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+-set(QT Core Gui Quick QuickControls2 Widgets DBus LinguistTools)
++set(QT Core Gui Quick QuickControls2 Widgets DBus)
+ find_package(Qt5 REQUIRED ${QT})
+ 
+ # Get the installation directory from qmake
+@@ -49,12 +49,6 @@ target_link_libraries(${PROJECT_NAME}
+         Qt5::DBus
+ )
+ 
+-file(GLOB TS_FILES translations/*.ts)
+-qt5_create_translation(QM_FILES ${TS_FILES})
+-add_custom_target(translations DEPENDS ${QM_FILES} SOURCES ${TS_FILES})
+-add_dependencies(${PROJECT_NAME} translations)
+-install(FILES ${QM_FILES} DESTINATION /usr/share/cutefish-terminal/translations)
+-
+ install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION /usr/bin)
+ 
+ install(FILES
