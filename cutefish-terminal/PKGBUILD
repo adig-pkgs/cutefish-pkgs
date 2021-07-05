@@ -1,6 +1,6 @@
 # Maintainer: noone <>
 pkgname=cutefish-terminal-git
-pkgver=r3.ca444e5
+pkgver=r4.3fbb988
 pkgrel=1
 pkgdesc="Cutefish Terminal"
 arch=('x86_64')

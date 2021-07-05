@@ -7,7 +7,7 @@ do
 	if [ -d "$package" ]; then
 		cd "$package"
 			# Skip failed packages, go on to install/update other packages of the group
-		makepkg -si --needed || true
+		makepkg -srC --needed || true
 		cd ..
 	fi
 done
