@@ -33,7 +33,7 @@ build() {
 	for PKGBUILD_PATH in $(find . -name "PKGBUILD"); do
 		pkgbuild_dir=${PKGBUILD_PATH%PKGBUILD}
 		pushd "$pkgbuild_dir"
-			makepkg -sr --noconfirm --needed
+			sudo -u "${BUILD_USER}" makepkg -sr --noconfirm --needed
 		popd
 	done
 
