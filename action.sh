@@ -15,7 +15,7 @@ MAKEFLAGS="-j$(nproc)"
 : ${GIT_BRANCH:="gh-pages"}
 
 GITHUB_REPO_OWNER=${GITHUB_REPOSITORY%/*}
-GITHUB_REPO_NAME=${GITHUB_REPOSITORY}
+ARCH_REPO_NAME=cutefish-git
 
 initialize() {
 	pacman -Syu --noconfirm --needed git ccache ninja
@@ -30,40 +30,43 @@ initialize() {
 build() {
 	export MAKEFLAGS="-j$(nproc)"
 
+	mkdir -pv "${PKGS_DIR}"
+
 	for PKGBUILD_PATH in $(find . -name "PKGBUILD"); do
 		pkgbuild_dir=${PKGBUILD_PATH%PKGBUILD}
 		pushd "$pkgbuild_dir"
 			sudo -u "${BUILD_USER}" makepkg -sr --noconfirm --needed
+			cp -v *.pkg.tar.zst "${PKGS_DIR}/"
 		popd
 	done
-
-	cp -rv *.pkg.tar.zst "${PKGS_DIR}/"
 }
 
 publish() {
-	# Checkout the publishing branch
-	git checkout "${GIT_BRANCH}"
-	mkdir -pv "${ARCH}"
+	# Expecting the branch is cloned at "${GITHUB_BRANCH}"
+	cd "$GIT_BRANCH"
+ 	# git checkout "${GIT_BRANCH}"
+	rm -rfv "${ARCH}"
+	mkdir "${ARCH}"
 
 	# Remove older commit
 	git reset --soft HEAD^
-	rm -rv "${ARCH}/"*
 
 	# Add the packages
 	cd "${ARCH}"
-	cp -rv "${PKGS_DIR}/"*.pkg.tar.zst .
-	repo-add ${GITHUB_REPO_NAME}.db.tar.gz *.pkg.tar.zst
+	find "${PKGS_DIR}" -name "*.pkg.tar.zst" -exec cp -v "{}" . \;
+	repo-add $ARCH_REPO_NAME.db.tar.gz *.pkg.tar.zst
 	rename '.tar.gz' '' *.tar.gz
 
 	# Commit
-	git add --all
+	git add --all --verbose
+	echo "Adding manually"
+	git add "${ARCH}" --verbose
 	git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 	git config user.name "${GITHUB_ACTOR}"
 
 	git commit -m "Built at $(date +'%d/%m/%Y %H:%M:%S')"
 
 	# Push
-	git remote add origin "${GIT_REMOTE}"
 	git push -fu origin "${GIT_BRANCH}"
 }
 

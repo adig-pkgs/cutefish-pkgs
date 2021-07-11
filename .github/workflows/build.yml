@@ -13,17 +13,23 @@ env:
 
 jobs:
   publish:
-    continue-on-error: true
     runs-on: ubuntu-latest
     container:
       image: archlinux:base-devel
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
+        if: always()
         with:
-          key: cache-${{ matrix.package }}
+          key: cache-cutefish
           path: ${{ env.CCACHE_DIR }}
+      - run: pacman -Syu --noconfirm
       - run: ./action.sh initialize 
       - run: ./action.sh build
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ env.GIT_BRANCH }}
+          path: ${{ env.GIT_BRANCH }}
+          fetch-depth: 0
       - run: ./action.sh publish
-
+        if: always()
