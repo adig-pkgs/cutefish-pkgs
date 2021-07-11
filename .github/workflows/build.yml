@@ -1,0 +1,29 @@
+name: package
+
+on:
+  push:
+  schedule:
+    - cron: 0 6 * * * # Run at about 11:30 PM Indian Standard Time
+
+env:
+  PKGS_DIR: /tmp/__pkgs__
+  CCACHE_DIR: /tmp/ccache
+  GIT_REMOTE: https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}.git
+  GIT_BRANCH: gh-pages
+
+jobs:
+  publish:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:base-devel
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          key: cache-${{ matrix.package }}
+          path: ${{ env.CCACHE_DIR }}
+      - run: ./action.sh initialize 
+      - run: ./action.sh build
+      - run: ./action.sh publish
+
