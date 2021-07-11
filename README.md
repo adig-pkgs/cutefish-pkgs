@@ -1,11 +1,11 @@
-[![release](https://github.com/adig-pkgs/cutefish-pkgs/workflows/release/badge.svg)](https://github.com/adig-pkgs/cutefish-pkgs/actions?query=workflow%3Apublish)
+[![release](https://github.com/adig-pkgs/cutefish-pkgs/actions/workflows/build.yml/badge.svg)](https://github.com/adig-pkgs/cutefish-pkgs/actions/workflows/build.yml)
 
 ## Usage
 
 Add following lines to your `/etc/pacman.conf`.
 
 ```
-[adig-pkgs]
+[cutefish-git]
 SigLevel = Optional
 Server = https://adig-pkgs.github.io/cutefish-pkgs/$arch/
 ```
