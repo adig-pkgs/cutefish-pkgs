@@ -54,13 +54,12 @@ publish() {
 	# Add the packages
 	cd "${ARCH}"
 	find "${PKGS_DIR}" -name "*.pkg.tar.zst" -exec cp -v "{}" . \;
+
 	repo-add $ARCH_REPO_NAME.db.tar.gz *.pkg.tar.zst
 	rename '.tar.gz' '' *.tar.gz
 
 	# Commit
 	git add --all --verbose
-	echo "Adding manually"
-	git add "${ARCH}" --verbose
 	git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 	git config user.name "${GITHUB_ACTOR}"
 

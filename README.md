@@ -1,16 +1,27 @@
-## These are not official PKGBUILDs, though you may like to use them
+## Unofficial Arch Repository for cutefish-git packages
 
-Run the `install_all.sh` script to install all packages of the groups `cutefish-git` (these packages)
+### Usage
 
-These packages may provide additional features as the cutefish os are updated. For eg, currently the arch repo cutefish-dock doesn't have hide functionality which is now available in the cutefish repos.
+Add following lines to your /etc/pacman.conf.
 
-* All of these packages will replace the 'older' (& likely more stable) packages installed through arch repositories.
+```
+[cutefish-git]
+SigLevel = Optional
+Server = https://adig-pkgs.github.io/cutefish-pkgs/$arch/
+```
+
+These packages are built by Github Actions, and from the latest -git sources, hence may provide additional features as the cutefish os are updated (The repo was created for this only, as some features were very new in dock).
+
 * All of these belong to the `cutefish-git` group
 
-> It is intentional to look like all have 90-95% exactly same PKGBUILDS, and hence **use as much substitutions with variable names as possible, instead of hardcoding the name/url.**
-
-> remove\_translation patches: You can simply remove the prepare step altogether, in any of them where you want to keep the translations, i originally did so because the build failed for me with translations, though you should be fine with QT Linguist i guess 👍
+> remove\_translation patches: I removed translations due to failing builds for me, will remove these later, or eitherways you will be fine using it
 
 ![Screenshot of cutefish-git group packages](https://user-images.githubusercontent.com/37269665/123208317-7bcf2a00-d4dc-11eb-8548-1c30a27ded39.png)
 
 Checkout the Cutefish OS repositories at https://github.com/cutefishos
+
+>
+> "Dream is not that which you see while sleeping it is something that does not let you sleep."
+> - Dr. APJ Abdul Kalam
+>
+
