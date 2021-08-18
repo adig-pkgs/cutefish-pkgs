@@ -1,5 +1,9 @@
 ## Unofficial Arch Repository for cutefish-git packages
 
+## NO MORE MAINTAINED... official packages are updated frequently enough
+
+> ... Honestly it's because there are new errors :(, and as the original repo grows, it becomes tough to correctly match all dependencies (ie. I face dependency problems every time a big change happens on the original... go for the official 'cutefish' package group
+
 ### Usage
 
 Add following lines to your /etc/pacman.conf.
